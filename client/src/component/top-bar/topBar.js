@@ -9,41 +9,33 @@ class TopBar extends React.Component {
 
         this.state = {
             searchStr: "",
-            value: "",
-            suggestions: []
+            suggestions: [{"symbol":"AAPL","name":"Apple Inc. - Common Stock","exchange":"NASDAQ"},{"symbol":"AAP","name":"Advance Auto Parts Inc Advance Auto Parts Inc W/I","exchange":"NYSE"}]
         };
 
         this.changedSearch = this.changedSearch.bind(this);
         this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     }
 
-    // changedSearch(event) {
-    //     this.setState({
-    //         search: event.target.value
-    //     }, this.searchStock);
-    // }
-
-    // async searchStock() {
-    //     let searchStr = this.state.search;
-    //     let response = await AlphaVantageService.searchStock(searchStr);
-    //     let responseJson = await response.json();
-    //     console.log(responseJson);
-    // }
-
     onSuggestionsFetchRequested({ value }) {
         console.log(value);
     }
 
     onSuggestionsClearRequested() {
-
+        this.setState({
+            suggestions: []
+        });
     }
 
-    getSuggestionValue() {
-
+    getSuggestionValue(suggestion) {
+        return suggestion.symbol;
     }
 
-    renderSuggestion() {
-
+    renderSuggestion(suggestion) {
+        return (
+            <div>
+                {suggestion.name}
+            </div>
+        );
     }
 
     changedSearch(event) {
