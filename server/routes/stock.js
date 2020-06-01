@@ -14,7 +14,7 @@ router.post("/", async function(req, res, next) {
         return;
     }
 
-    await stock.clearStockList();
+    await stockService.clearStockList();
     let stocks = inputJson["stocks"];
     for (const stock of stocks) {
         stockService.addStock(stock["symbol"], stock["name"], stock["exchange"]);

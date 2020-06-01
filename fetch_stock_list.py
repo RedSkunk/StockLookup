@@ -1,4 +1,10 @@
 from urllib.request import urlopen
+import urllib3
+import json
+
+http = urllib3.PoolManager()
+server_baseurl = "http://stocklookup-env.eba-mdpeyzrt.us-east-2.elasticbeanstalk.com/api"
+secret_id = "aw12kjebf23429jae0aklr29304rjq9t7iro345"
 
 # this list will be sent
 stocks = []
@@ -36,7 +42,18 @@ for line in otherlisted[1:-1]: #skip first and last line
         stocks.append({ "symbol":lineStrList[7], "name":lineStrList[1], \
             "exchange":exchangeMap[lineStrList[2]]})
 
+def send_stock_list(stocks):
+    try:
+        request = http.request("POST", server_baseurl + "/stock/", \
+            body=json.dumps({"secretId": secret_id, "stocks": stocks}).encode('utf-8'), \
+            headers={'Content-Type': 'application/json'})
+        response_json = json.loads(request.data.decode('utf-8'))
 
+        print(response_json)
+        return True
+    except:
+        print("Error occured in send_stock_list()")
+        return False
 
 print(stocks)
-print(stocks[0])
+send_stock_list(stocks)
