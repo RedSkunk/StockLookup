@@ -1,0 +1,57 @@
+/* Element Overrides */
+body {
+  margin: auto;
+
+  font-family: "Open Sans", "Quicksand",sans-serif;
+}
+
+/* Colors */
+.c-red {
+  color: #FF5370;
+}
+.c-green {
+  color: #00b294;
+}
+.c-grey {
+  color: #949293;
+}
+.bg-c-blue {
+  background: #4099ff;
+}
+.bg-c-yellow {
+  background: #FFB64D;
+}
+
+.main-content {
+  background-color: #011a36;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 16px 16px;
+
+  min-height: 100vh;
+}
+
+.card {
+  color: white;
+  background-color: #102842;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(43,43,43,0.1), 0 11px 6px -7px rgba(43,43,43,0.1);
+  box-shadow: 0 0 5px 0 rgba(43,43,43,0.1), 0 11px 6px -7px rgba(43,43,43,0.1);
+  border: none;
+  margin-bottom: 30px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.card-body .dnd-area {
+  background-color: #94929345;
+  border-radius: 5px;
+  min-height: 40px;
+}
+
+.stock-ticker {
+  height: 60px;
+  background-color: #09213c;
+  /* border-bottom: #2b3c4e8f 1px solid; */
+  margin-bottom: 6px;
+  border-radius: 5px;
+}

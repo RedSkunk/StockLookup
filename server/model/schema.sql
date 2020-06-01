@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS stock CASCADE;
+
+CREATE TABLE stock (
+    symbol VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    exchange VARCHAR(10) NOT NULL
+);
