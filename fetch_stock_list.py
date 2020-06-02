@@ -4,7 +4,7 @@ import json
 
 http = urllib3.PoolManager()
 server_baseurl = "http://stocklookup-env.eba-mdpeyzrt.us-east-2.elasticbeanstalk.com/api"
-secret_id = "aw12kjebf23429jae0aklr29304rjq9t7iro345"
+secret_id = ""
 
 # this list will be sent
 stocks = []
