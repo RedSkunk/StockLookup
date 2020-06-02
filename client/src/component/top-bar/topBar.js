@@ -1,6 +1,5 @@
 import React from "react";
-import Autosuggest from 'react-autosuggest';
-
+import SimpleAutosuggest from "../simple-autosuggest/simpleAutosuggest";
 import "./topBar.css";
 
 class TopBar extends React.Component {
@@ -8,62 +7,73 @@ class TopBar extends React.Component {
         super(props);
 
         this.state = {
-            searchStr: "",
-            suggestions: [{"symbol":"AAPL","name":"Apple Inc. - Common Stock","exchange":"NASDAQ"},{"symbol":"AAP","name":"Advance Auto Parts Inc Advance Auto Parts Inc W/I","exchange":"NYSE"}]
+            suggestions: []
         };
 
-        this.changedSearch = this.changedSearch.bind(this);
-        this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
+        this.fetchStockList = this.fetchStockList.bind(this);
+        // this.changedSearch = this.changedSearch.bind(this);
+        // this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
+        // this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
+        // this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
+        // // this.onSuggestionHighlighted = this.onSuggestionHighlighted.bind(this);
+        // this.getSuggestionValue = this.getSuggestionValue.bind(this);
+        this.clickedButton = this.clickedButton.bind(this);
+        this.selectedSuggestion = this.selectedSuggestion.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
-    onSuggestionsFetchRequested({ value }) {
+    clickedButton() {
+        this.setState({
+            searchStr: "aaa"
+        });
+    }
+
+    async fetchStockList(searchStr) {
+        console.log("fetch");
+        let response = await fetch("http://stocklookup-env.eba-mdpeyzrt.us-east-2.elasticbeanstalk.com/api/stock/search?startWith="+searchStr);
+        let responseJson = await response.json();
+        if (responseJson["status"] == null || responseJson["status"] !== "success") {
+            return;
+        }
+        this.setState({
+            suggestions: responseJson["stocks"]
+        }, ()=>console.log(this.state.suggestions));
+    }
+
+    selectedSuggestion(suggestion) {
+        console.log(suggestion);
+    }
+    onChange(value) {
         console.log(value);
-    }
-
-    onSuggestionsClearRequested() {
-        this.setState({
-            suggestions: []
-        });
-    }
-
-    getSuggestionValue(suggestion) {
-        return suggestion.symbol;
-    }
-
-    renderSuggestion(suggestion) {
-        return (
-            <div>
-                {suggestion.name}
-            </div>
-        );
-    }
-
-    changedSearch(event) {
-        this.setState({
-            searchStr: event.target.value
-        });
+        this.fetchStockList(value);
     }
 
     render() {
-        const inputProps = {
-            placeholder: "Enter stock ticker here, e.g. AAPL",
-            value: this.state.searchStr,
-            onChange: this.changedSearch
-        };
+        
         return (
             <div className="top-bar row">
-                {/* <input className="search form-control col-7" type="text" 
-                    placeholder="Enter stock ticker here, e.g. AAPL" 
-                    value={this.state.search} onChange={this.changedSearch}/> */}
-                <Autosuggest
+                <SimpleAutosuggest 
+                    placeholder="Enter stock ticker here, e.g. APPL"
+                    suggestions={this.state.suggestions}
+                    selectedSuggestion={this.selectedSuggestion}
+                    onChange={this.onChange}/>
+                <button onClick={this.clickedButton}/>
+                {/* <Autosuggest
                     suggestions={this.state.suggestions}
                     onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                     onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                     getSuggestionValue={this.getSuggestionValue}
                     renderSuggestion={this.renderSuggestion}
+                    alwaysRenderSuggestions={true}
+                    onSuggestionSelected={this.onSuggestionSelected}
+                    // onSuggestionHighlighted={this.onSuggestionHighlighted}
                     inputProps={inputProps}
-                    theme={{container: "col-7", input:"search form-control"}}
-                />
+                    theme={{container: "search col-md-7 col-sm-12", 
+                        input:"input", 
+                        suggestion:"suggestion", 
+                        suggestionsList:"suggestionsList",
+                        suggestionsContainer:"suggestionsContainer"}}
+                /> */}
             </div>
         );
     }

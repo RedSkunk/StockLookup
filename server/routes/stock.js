@@ -1,5 +1,8 @@
 const PromiseRouter = require("express-promise-router");
 const router = new PromiseRouter();
+const cors = require('cors')
+
+
 const stockService = require("../model/database").stockService;
 const inputValidate = require("../utility/inputValidate");
 const responseFormatter = require("../utility/responseFormatter");
@@ -24,7 +27,7 @@ router.post("/", async function(req, res, next) {
     res.status(200).send(responseFormatter.success(response));
 });
 
-router.get("/search", async function(req, res, next) {
+router.get("/search", cors(), async function(req, res, next) {
     let response = {};
 
     if (inputValidate.isWhitespaceOrNull(req.query["startWith"])) {
