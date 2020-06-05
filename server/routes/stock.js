@@ -1,7 +1,6 @@
 const PromiseRouter = require("express-promise-router");
 const router = new PromiseRouter();
-const cors = require('cors')
-
+const cors = require('cors');
 
 const stockService = require("../model/database").stockService;
 const inputValidate = require("../utility/inputValidate");
@@ -23,6 +22,7 @@ router.post("/", async function(req, res, next) {
     for (const stock of stocks) {
         stockService.addStock(stock["symbol"], stock["name"], stock["exchange"]);
     }
+    await stockService.addUpdateRecord();
     
     res.status(200).send(responseFormatter.success(response));
 });
@@ -38,6 +38,14 @@ router.get("/search", cors(), async function(req, res, next) {
 
     let stocks = await stockService.searchStock(req.query["startWith"]);
     response["stocks"] = stocks;
+    res.status(200).send(responseFormatter.success(response));
+});
+
+router.get("/last-update-date", cors(), async function(req, res, next) {
+    let response = {};
+
+    let lastUpdateDate = await stockService.getLastUpdateDate();
+    response["lastUpdateDate"] = lastUpdateDate;
     res.status(200).send(responseFormatter.success(response));
 });
 

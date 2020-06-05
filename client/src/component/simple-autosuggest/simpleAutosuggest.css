@@ -1,5 +1,6 @@
 .auto-suggest-container {
     width: 100%;
+    margin-bottom: 8px;
 }
 .auto-suggest-container .form-control {
     border: none;

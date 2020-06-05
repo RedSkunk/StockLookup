@@ -34,3 +34,9 @@ body {
 .card-subtitle {
   margin-bottom: 12px;
 }
+.card p {
+  margin-bottom: 0;
+  /* margin-top: 8px; */
+  font-size: 13px;
+  color: #667382;
+}

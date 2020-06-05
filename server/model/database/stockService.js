@@ -36,3 +36,25 @@ exports.searchStock = async function(startWith) {
         return false;
     }
 }
+
+exports.addUpdateRecord = async function() {
+    try {
+        const res = await db.query("INSERT INTO update_record(update_date) VALUES (NOW())", 
+            []);
+        return true;
+    } catch (err) {
+        console.log(err.stack);
+        return false;
+    }
+}
+
+exports.getLastUpdateDate = async function() {
+    try {
+        const res = await db.query("SELECT * FROM update_record ORDER BY update_date LIMIT 1", 
+            []);
+        return res.rows[0]["update_date"];
+    } catch (err) {
+        console.log(err.stack);
+        return false;
+    }
+}
