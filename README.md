@@ -1,19 +1,31 @@
-# React Express Example
+# Introduction
 
-This project offers a simple example of how to set up a React project with Create React App and how to connect this app with an Express backend. React-Router is also used for routing.
+### What
 
-## Prerequisites
-In order to run this project node.js and npm both need to have been installed.
+This project is intended to track the drop rate of classes at University of Toronto St. George Campus.
 
-## Deployment
-<ol>
-<li>Clone this repo</li>
-<li>Run npm start from react-express-example to start the Express app</li>
-<li>Run npm start from the client directory to start the React app</li>
-<li>Visit http://localhost:3000/</li>
-</ol>
+User can access the list of most and least dropped classes, as well as the historical enrolment of a class over the course of a semester.
 
-## Built With
-* [React.js](https://reactjs.org/)
-* [Express.js](https://expressjs.com/)
-* [React-Router](https://reacttraining.com/react-router/core/guides/philosophy)
+### Why
+
+Difficulty of a class can be hard to gauge. One of the biggest problem facing UofT students is that there are no readily available data of how hard a class is, except by word of mouth.
+
+This application attempts to compile the list of most dropped course by tracking daily enrolment through the official website.
+
+
+<img src="./screenshots/1.png" width="70%">
+<img src="./screenshots/2.png" width="70%">
+
+# Technology
+
+### Frontend
+
+- React
+- JavaScript
+
+### Backend 
+
+- NodeJs 
+- Express
+- PostgresSQL
+- Python (hosted on AWS Lambda)
