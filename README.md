@@ -1,3 +1,5 @@
+<img src="./screenshots/2.png" width="70%">
+
 # Introduction
 
 ### What
