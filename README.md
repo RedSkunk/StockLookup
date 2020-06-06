@@ -1,6 +1,7 @@
-<img src="./screenshots/2.png" width="70%">
-
 # Introduction
+
+<img src="./screenshots/1.png" width="70%">
+
 
 ### What
 
@@ -8,34 +9,31 @@ This project is intended to provide stock symbol autosuggest feature for my othe
 
 ### Why
 
-There are a few reasons for this project:
+Implementing a autosuggest search feature requires a search call for each character typed. One critical problem for implementing this feature using readily available api is that most of them have some form of **rate limiting**.
 
-1. Turns out, most free stock api that currently available have some form of **rate limiting** on stock symbol search or have other problem
+Imagine if an API has a 5 calls/min limit, that means we would have already maxed out our limit for that minute with just 5 characters typed from 1 user!
+
+Turns out, almost all stock api that I could find have some form of **rate limiting** that makes it **impossible** to implement a autosuggest feature.
 
 | API  | Rate Limit | Note |
 | ------------- | ------------- | ------------- |
 | AlphaVantage  | 5 calls/min | Weird API response, paid is 30 calls/min only
 | Questrade  | 20 calls/sec | BUT need to manually (non-api) refresh token every 7 days
 | Yahoo Finance | Infinite | Breaks term of service
-| IEX  | - | Paid only for symbol search, no realtime data
+| IEX  | - | Paid only for symbol search
 | TD thinkorswim | - | No symbol search
 | Google Finance | - | No symbol search
 | Finnhub | - | No symbol search
 | World trading data | - | No symbol search
-| Many others... | - | Either **low rate limit**, or is paid only with disadvantages (e.g. no realtime data)
+| Many others... | - | Either **low rate limit**, or is paid only with other limitations that makes it not worthwhile (e.g. no realtime data)
 
-2. Static frontend search is also not feasible, because stocks are listed and delisted **every day**
+A Static frontend search is also **not feasible**, because stocks are listed and delisted **every day**
 
-In the end, the best way to implement stock symbol autosuggest is to create a simple service
+In the end, the best way to implement stock symbol autosuggest is to create our own.
 
 ### How
 
-Every day, the list of stocks are fetch directly from nasdaq into our database. This list is then searchable through API calls
-
-This application attempts to compile the list of most dropped course by tracking daily enrolment through the official website.
-
-<img src="./screenshots/1.png" width="70%">
-<img src="./screenshots/2.png" width="70%">
+Every day, the list of stocks are fetch directly from nasdaq into our database. This list is then searchable through API calls.
 
 # Technology
 
