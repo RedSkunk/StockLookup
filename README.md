@@ -1,3 +1,5 @@
+<img src="./screenshots/1.png" width="70%">
+
 # Introduction
 
 ### What
@@ -31,8 +33,6 @@ In the end, the best way to implement stock symbol autosuggest is to create our 
 ### How
 
 Every day, the list of stocks are fetch directly from nasdaq into our database. This list is then searchable through API calls.
-
-<img src="./screenshots/1.png" width="70%">
 
 # Technology
 
