@@ -28,8 +28,8 @@ exports.clearStockList = async function() {
 
 exports.searchStock = async function(startWith) {
     try {
-        const res = await db.query("SELECT * FROM stock WHERE symbol ILIKE $1 LIMIT 10", 
-            [startWith+"%"]);        
+        const res = await db.query("SELECT * FROM stock WHERE symbol ILIKE $1 OR name ILIKE $2 LIMIT 10", 
+            [startWith+"%", "%"+startWith+"%"]);        
         return res.rows;
     } catch (err) {
         console.log(err.stack);
