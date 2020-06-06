@@ -7,7 +7,11 @@
 
 This project is intended to provide stock symbol autosuggest feature for my other projects. There are pratical reasons why I decided to build a seperate service just to search stock symbol. Please read below.
 
-### Why
+### How
+
+Every day, the list of stocks are fetch directly from nasdaq into our database. This list is then searchable through API calls.
+
+# Why
 
 Implementing a autosuggest search feature requires a search call for each character typed. One critical problem for implementing this feature using readily available api is that most of them have some form of **rate limiting**.
 
@@ -30,10 +34,6 @@ Turns out, almost all stock api that I could find have some form of **rate limit
 A Static frontend search is also **not feasible**, because stocks are listed and delisted **every day**
 
 In the end, the best way to implement stock symbol autosuggest is to create our own.
-
-### How
-
-Every day, the list of stocks are fetch directly from nasdaq into our database. This list is then searchable through API calls.
 
 # Technology
 
