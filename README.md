@@ -5,7 +5,7 @@
 
 ### What
 
-This project is intended to provide stock symbol autosuggest feature for my other projects. There are pratical reasons why I decided to build a seperate service just to search stock symbol. Please read below.
+This project is intended to provide stock symbol autosuggest feature for my other projects. There are pratical reasons why I decided to build a seperate service just to search stock symbol.
 
 ### How
 
