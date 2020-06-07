@@ -4,7 +4,7 @@
 
 Hosted at http://stocklookup-env.eba-mdpeyzrt.us-east-2.elasticbeanstalk.com/
 
-This project is intended to provide stock symbol autosuggest feature for my other projects. Every day, the list of stocks are fetch directly from nasdaq into our database. The list is then searchable through API calls.
+This project is intended to provide **stock symbol auto-suggest** feature for my other projects. Every day, the list of stocks are fetch directly from nasdaq into our database. The list is then searchable through API calls.
 
 There are **very pratical reasons** why I decided to build a seperate service just to search stock symbol. **Please read below**.
 
