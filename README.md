@@ -10,7 +10,7 @@ There are **very pratical reasons** why I decided to build a seperate service ju
 
 # Why
 
-Implementing a autosuggest search feature requires a search call for each character typed. One critical problem for implementing this feature using readily available api is that most of them have some form of **rate limiting**.
+Implementing a **auto-suggest** search feature requires a **search call for each character typed**. One critical problem for implementing this feature using readily available api is that most of them have some form of **rate limiting**.
 
 Imagine if an API has a 5 calls/min limit, that means we would have already maxed out our limit for that minute with just 5 characters typed from 1 user!
 
