@@ -2,13 +2,15 @@
 
 <img src="./screenshots/1.png" width="70%">
 
-This project is intended to provide stock symbol autosuggest feature for my other projects. Every day, the list of stocks are fetch directly from nasdaq into our database. The list is then searchable through API calls.
+Hosted at http://stocklookup-env.eba-mdpeyzrt.us-east-2.elasticbeanstalk.com/
 
-There are pratical reasons why I decided to build a seperate service just to search stock symbol. Please read below.
+This project is intended to provide **stock symbol auto-suggest** feature for my other projects. Every day, the list of stocks are fetch directly from nasdaq into our database. The list is then searchable through API calls.
+
+There are **very pratical reasons** why I decided to build a seperate service just to search stock symbol. **Please read below**.
 
 # Why
 
-Implementing a autosuggest search feature requires a search call for each character typed. One critical problem for implementing this feature using readily available api is that most of them have some form of **rate limiting**.
+Implementing a **auto-suggest** search feature requires a **search call for each character typed**. One critical problem for implementing this feature using freely available api is that most of them have some form of **rate limiting**.
 
 Imagine if an API has a 5 calls/min limit, that means we would have already maxed out our limit for that minute with just 5 characters typed from 1 user!
 
