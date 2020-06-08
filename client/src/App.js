@@ -60,7 +60,7 @@ class App extends React.Component {
                 <div className="main-content row">
                     <div className="card col-md-6">
                         <div className="card-body">
-                            <div className="card-subtitle">Stock Ticker Autosuggest</div>
+                            <div className="card-subtitle">Stock Ticker Auto-suggest</div>
                             <div className="row">
                                 <SimpleAutosuggest 
                                     placeholder="Enter stock ticker here, e.g. AAPL"
