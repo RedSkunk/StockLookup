@@ -50,7 +50,7 @@ exports.addUpdateRecord = async function() {
 
 exports.getLastUpdateDate = async function() {
     try {
-        const res = await db.query("SELECT * FROM update_record ORDER BY update_date LIMIT 1", 
+        const res = await db.query("SELECT * FROM update_record ORDER BY update_date DESC LIMIT 1", 
             []);
         return res.rows[0]["update_date"];
     } catch (err) {
